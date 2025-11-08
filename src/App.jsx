@@ -2,14 +2,15 @@ import { useEffect } from 'react';
 import Navbar from './components/Navbar.jsx';
 import Hero from './components/Hero.jsx';
 import Services from './components/Services.jsx';
+import Portfolio from './components/Portfolio.jsx';
+import Testimonials from './components/Testimonials.jsx';
 import Contact from './components/Contact.jsx';
 
 function App() {
   useEffect(() => {
-    // Initialize theme from localStorage or prefers-color-scheme
+    // Default to light theme while respecting a saved preference
     const saved = localStorage.getItem('theme');
-    const prefersDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
-    const theme = saved || (prefersDark ? 'dark' : 'light');
+    const theme = saved || 'light';
     if (theme === 'dark') {
       document.documentElement.classList.add('dark');
     } else {
@@ -18,15 +19,17 @@ function App() {
   }, []);
 
   return (
-    <div className="min-h-screen bg-white text-slate-900 dark:bg-[#0b1020] dark:text-slate-100 selection:bg-blue-500/20 selection:text-blue-200">
+    <div className="min-h-screen bg-white text-slate-900 selection:bg-blue-500/20 selection:text-blue-800">
       <Navbar />
       <main>
         <Hero />
         <Services />
+        <Portfolio />
+        <Testimonials />
         <Contact />
       </main>
-      <footer className="border-t border-slate-200/10 py-8 text-center text-sm text-slate-500 dark:text-slate-400">
-        © {new Date().getFullYear()} Flames Studio — Building scalable software for the future.
+      <footer className="border-t border-slate-200 py-8 text-center text-sm text-slate-500">
+        © {new Date().getFullYear()} Techsense — Building scalable software for the future.
       </footer>
     </div>
   );
