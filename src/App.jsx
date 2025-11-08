@@ -1,31 +1,20 @@
-import { useEffect } from 'react';
+import React from 'react';
 import Navbar from './components/Navbar.jsx';
 import Hero from './components/Hero.jsx';
 import Portfolio from './components/Portfolio.jsx';
 import Contact from './components/Contact.jsx';
 
 function App() {
-  useEffect(() => {
-    // Default to light theme while respecting a saved preference
-    const saved = localStorage.getItem('theme');
-    const theme = saved || 'light';
-    if (theme === 'dark') {
-      document.documentElement.classList.add('dark');
-    } else {
-      document.documentElement.classList.remove('dark');
-    }
-  }, []);
-
   return (
-    <div className="min-h-screen bg-white text-slate-900 selection:bg-blue-500/20 selection:text-blue-800">
+    <div className="min-h-screen bg-white text-gray-900 antialiased">
       <Navbar />
       <main>
         <Hero />
         <Portfolio />
         <Contact />
       </main>
-      <footer className="border-t border-slate-200 py-8 text-center text-sm text-slate-500">
-        © {new Date().getFullYear()} Techsense — Building scalable software for the future.
+      <footer className="border-t border-gray-200 py-8 text-center text-sm text-gray-500">
+        © {new Date().getFullYear()} Techsense. All rights reserved.
       </footer>
     </div>
   );
